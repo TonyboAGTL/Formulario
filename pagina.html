@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Café con Historia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primario: #8c5e3c;
+      --color-secundario: #f8f3ec;
+      --color-acento: #d4a373;
+      --color-oscuro: #3e3227;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('https://static.vecteezy.com/system/resources/previews/004/342/335/non_2x/coffee-beans-background-repeated-dark-brown-texture-for-cafe-menu-vector.jpg') repeat;
+      background-attachment: fixed;
+      color: var(--color-oscuro);
+    }
+    header {
+      position: fixed; top: 0; left: 0; z-index: 1000;
+      background-color: var(--color-primario);
+      width: 100%; padding: 1.5rem 0; text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    header img { height: 110px; }
+    nav { margin-top: 10px; }
+    nav a {
+      color: white; text-decoration: none; margin: 0 25px;
+      font-weight: bold; font-size: 1.2rem; padding: 10px 16px;
+      border-radius: 5px; transition: background 0.3s;
+    }
+    nav a:hover { background-color: var(--color-acento); color: var(--color-oscuro); }
+    .banner {
+      margin-top: 200px;
+      background: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                  url('https://www.baque.com/wp-content/uploads/2017/12/historia-del-cafe.jpg') center/cover no-repeat;
+      height: 280px; display: flex; justify-content: center; align-items: center;
+      color: white; text-shadow: 2px 2px 6px rgba(0,0,0,0.6); text-align: center; padding: 0 1rem;
+    }
+    .banner h1 { font-family: 'Pacifico', cursive; font-size: 3.2rem; }
+    main {
+      max-width: 1200px; margin: auto;
+      background-color: rgba(255,255,255,0.96); padding: 2rem;
+      border-radius: 12px; margin-top: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h2 {
+      font-family: 'Pacifico', cursive; color: var(--color-primario);
+      font-size: 2.5rem; margin-bottom: 1rem; text-align: center;
+    }
+    section { margin-bottom: 3rem; }
+    .galeria {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 1.5rem;
+    }
+    .galeria img {
+      width: 100%; height: 250px; object-fit: cover; border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s;
+    }
+    .galeria img:hover { transform: scale(1.05); }
+    ul { list-style: none; padding: 0; font-size: 1.1rem; }
+    li::before { content: "☕ "; color: var(--color-acento); }
+    .boton {
+      background-color: var(--color-primario); color: white;
+      padding: 0.9rem 1.7rem; border: none; border-radius: 25px;
+      font-size: 1rem; font-weight: 600; cursor: pointer;
+      transition: background 0.3s ease; text-decoration: none;
+      display: inline-block; margin-top: 1rem;
+    }
+    .boton:hover { background-color: var(--color-acento); color: var(--color-oscuro); }
+    footer {
+      background-color: var(--color-primario); color: white;
+      text-align: center; padding: 1.5rem; margin-top: 2rem;
+      border-top: 5px solid var(--color-acento);
+    }
+    a { color: white; text-decoration: underline; }
+
+/* ─────────────────────── NUEVO FORMULARIO (estilo idéntico al resto de la página) ─────────────────────── */
+    .seccion-formulario {
+      background: var(--color-secundario);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .contenedor-form {
+      max-width: 700px;
+      margin: 0 auto;
+      background: white;
+      padding: 3rem 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    .contenedor-form h2 {
+      margin-bottom: 0.5rem;
+    }
+    .contenedor-form p {
+      color: #7d6044;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+    .campo {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+    .campo label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--color-primario);
+    }
+    .campo input,
+    .campo select,
+    .campo textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #d7ccc8;
+      border-radius: 12px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+    .campo input:focus,
+    .campo select:focus,
+    .campo textarea:focus {
+      outline: none;
+      border-color: var(--color-acento);
+      box-shadow: 0 0 0 4px rgba(212,163,115,0.2);
+    }
+    .btn-form {
+      background: var(--color-primario);
+      color: white;
+      font-weight: 600;
+      padding: 14px 40px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-form:hover {
+      background: var(--color-acento);
+      color: var(--color-oscuro);
+      transform: translateY(-3px);
+    }
+    @media (max-width: 768px) {
+      header img { height: 90px; }
+      .banner h1 { font-size: 2rem; }
+      nav a { font-size: 1rem; margin: 5px; display: inline-block; }
+      .galeria img { height: 200px; }
+      .contenedor-form { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="https://cdn-icons-png.flaticon.com/128/5497/5497803.png" alt="Logo">
+    <nav>
+      <a href="#historia">Historia</a>
+      <a href="#galeria">Galería</a>
+      <a href="#menu">Menú</a>
+      <a href="#eventos">Eventos</a>
+      <a href="#opiniones">Opiniones</a>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <h1>Bienvenidos a Café con Historia</h1>
+  </div>
+
+  <main>
+    <section id="historia">
+      <h2>Nuestra Historia</h2>
+      <p>
+        Café con Historia nació en el corazón de Oaxaca de Juárez con el deseo profundo de crear algo más que una cafetería: un espacio donde el aroma del café orgánico se mezcla con la poesía, la cultura y el alma de nuestra tierra. Fundado por Valentina García, este rincón acogedor combina repostería artesanal hecha con recetas familiares, arte oaxaqueño en cada rincón y una comunidad que crece entre lecturas, exposiciones y conversaciones sinceras. Desde nuestra primera taza servida, hemos buscado honrar a los productores locales y ofrecer a nuestros visitantes un refugio donde el tiempo se detiene, las palabras fluyen y cada experiencia se convierte en historia. Aquí, cada detalle cuenta: la textura de la madera antigua, la música suave de fondo, los versos en las paredes y el pan de elote recién horneado. Café con Historia no es solo un lugar para tomar café, es una invitación a reconectar con lo esencial, a mirar con calma y a sentir con el corazón abierto.
+      </p>
+    </section>
+
+    <section id="galeria">
+      <h2>Galería</h2>
+      <div class="galeria">
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/042/805/604/small/modern-white-and-bright-cafe-with-natural-sunlight-coffee-shop-interior-design-decoration-concept-photo.jpg" alt="Interior del café">
+        <img src="https://img.freepik.com/fotos-premium/taza-cafe-negro-forma-corazon-arbol-leche-leche-arte-leche_7189-2318.jpg" alt="Taza de café">
+        <img src="https://us.123rf.com/450wm/meykitchen/meykitchen2306/meykitchen230604607/206768084-pastelitos-con-bayas-en-una-mesa-en-una-cafeter%C3%ADa-o-restaurante.jpg?ver=6" alt="Repostería artesanal">
+        <img src="https://perfectdailygrind.com/es/wp-content/uploads/sites/2/2019/11/vintage-coffee.jpg" alt="Evento cultural">
+      </div>
+    </section>
+
+    <section id="menu">
+      <h2>Menú Principal</h2>
+      <ul>
+        <li>Capuchino Orgánico - $50</li>
+        <li>Pan de elote artesanal - $35</li>
+        <li>Té chai especiado - $45</li>
+        <li>Brownie de cacao oaxaqueño - $40</li>
+      </ul>
+      <div class="galeria">
+        <img src="https://www.cafes-santacristina.com/sites/default/files/2023-09/capuchino.jpg" alt="Capuchino">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/18/85/30/40/rosa-salva.jpg" alt="Postres">
+      </div>
+    </section>
+
+    <section id="eventos">
+      <h2>Eventos Culturales</h2>
+      <p>Todos los jueves: Noche de poesía.<br>Todos los domingos: Exposición de artistas locales.</p>
+      <div class="galeria">
+        <img src="https://www.shutterstock.com/image-photo/portrait-beautiful-woman-reading-book-600nw-1855795813.jpg" alt="Lectura de poesía">
+        <img src="https://mx.habcdn.com/photos/project/medium/obras-de-arte-para-restaurante-449353.jpg" alt="Exposición de arte">
+      </div>
+    </section>
+  </main>
+
+  <!-- ==== AQUÍ ESTÁ EL FORMULARIO NUEVO (perfectamente integrado) ==== -->
+  <section class="seccion-formulario" id="opiniones">
+    <div class="contenedor-form">
+      <h2>¿Qué te pareció la cafetería?</h2>
+      <p>¡Nos encantaría saber tu opinión para seguir mejorando!</p>
+
+      <form action="https://formspree.io/f/tu-codigo-aqui" method="POST">
+        <div class="campo">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej. María López" required>
+        </div>
+
+        <div class="campo">
+          <label for="telefono">Teléfono de contacto</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="Ej. 951 234 5678" required>
+        </div>
+
+        <div class="campo">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" placeholder="maria@ejemplo.com" required>
+        </div>
+
+        <div class="campo">
+          <label for="encontraste">¿Cómo nos encontraste?</label>
+          <select id="encontraste" name="como_nos_encontraste" required>
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option value="instagram">Instagram</option>
+            <option value="facebook">Facebook</option>
+            <option value="amigos">Recomendación de amigos</option>
+            <option value="google">Google / Maps</option>
+            <option value="pasando">Pasando por el centro</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="mejorar">¿Qué mejorarías en la cafetería?</label>
+          <textarea id="mejorar" name="sugerencias" rows="5" placeholder="Tu opinión sincera nos ayuda muchísimo..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-form">Enviar mi opinión ☕</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>Centro de Oaxaca — Contacto: <a href="mailto:cafehistoria.oax@gmail.com">cafehistoria.oax@gmail.com</a></p>
+    <p>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3814.2077458994!2d-96.7311938250224!3d17.062487983770286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c722156a327cff%3A0x62c74fca25b51ca8!2sAv.%20de%20la%20Independencia%20310%2C%20Zona%20Lunes%20Feb%2009%2C%20Centro%2C%2068000%20Oaxaca%20de%20Ju%C3%A1rez%2C%20Oax.!5e0!3m2!1ses-419!2smx!4v1749250076698!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </p>
+  </footer>
+
+</body>
+</html>
